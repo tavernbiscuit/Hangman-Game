@@ -5,7 +5,6 @@ import hangman_words
 import hangman_art
 
 
-
 chosen_word = random.choice(hangman_words.word_list)
 word_length = len(chosen_word)
 
@@ -23,12 +22,12 @@ for _ in range(word_length):
     display += "_"
 
 while not end_of_game: 
+    print('Already entered: ' + "".join(str(x) for x in guesses))
     guess = input("Guess a letter: ").lower()
-   
+    
     for char in guesses:
       if guess == char:
         print("You have already entered that letter.")
-        wrong_guesses.append(guess)
     guesses.append(guess)
 
 
@@ -57,4 +56,4 @@ while not end_of_game:
 
    
     print(hangman_art.stages[lives])
-    print('Already entered: ' + "".join(str(x) for x in wrong_guesses))
+    
