@@ -12,6 +12,7 @@ word_length = len(chosen_word)
 end_of_game = False
 lives = 6
 guesses = []
+wrong_guesses = []
 
 
 print(hangman_art.logo)
@@ -26,8 +27,11 @@ while not end_of_game:
    
     for char in guesses:
       if guess == char:
-        print(f"You have entered: {guess}. You have already entered that letter.")
+        print("You have already entered that letter.")
+        wrong_guesses.append(guess)
     guesses.append(guess)
+
+
 
     for position in range(word_length):
         letter = chosen_word[position]
@@ -38,7 +42,7 @@ while not end_of_game:
   
     if guess not in chosen_word:
        
-        print(f"You have entered: {guess}. This letter is not in the word.")
+        print("This letter is not in the word.")
         lives -= 1
         if lives == 0:
             end_of_game = True
@@ -51,5 +55,6 @@ while not end_of_game:
         end_of_game = True
         print("You win.")
 
-    
+   
     print(hangman_art.stages[lives])
+    print('Already entered: ' + "".join(str(x) for x in wrong_guesses))
