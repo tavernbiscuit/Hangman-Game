@@ -3,7 +3,7 @@
 import random
 import hangman_words
 import hangman_art
-
+import os
 
 chosen_word = random.choice(hangman_words.word_list)
 word_length = len(chosen_word)
@@ -12,6 +12,8 @@ end_of_game = False
 lives = 6
 guesses = []
 wrong_guesses = []
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 print(hangman_art.logo)
@@ -24,7 +26,7 @@ for _ in range(word_length):
 while not end_of_game: 
     print('Already entered: ' + "".join(str(x) for x in guesses))
     guess = input("Guess a letter: ").lower()
-    
+    clear_console()
     for char in guesses:
       if guess == char:
         print("You have already entered that letter.")
