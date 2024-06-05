@@ -14,6 +14,8 @@ RUN apt-get update && \
 
 RUN chmod +x /usr/local/bin/gotty
 
+ENV TERM xterm
+
 EXPOSE 9090
 
 CMD ["gotty", "-w", "-p", "9090", "python", "main.py"]
